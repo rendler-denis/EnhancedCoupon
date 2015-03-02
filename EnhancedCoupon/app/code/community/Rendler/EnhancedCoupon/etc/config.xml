@@ -1,0 +1,124 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the GNU GENERAL PUBLIC LICENSE (GPL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://www.gnu.org/copyleft/gpl.html
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to magento@rendler.me so we can send you a copy immediately.
+ *
+ * @package     Rendler_EnhancedCoupon
+ * @copyright   Copyright (c) Denis-Florin Rendler <http://www.denis.rendler.me>
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU General Public License v.3
+ */
+-->
+<config>
+    <modules>
+        <Rendler_EnhancedCoupon>
+            <version>1.0.0</version>
+        </Rendler_EnhancedCoupon>
+    </modules>
+
+    <global>
+        <blocks>
+            <enhanced_coupon>
+                <class>Rendler_EnhancedCoupon_Block</class>
+            </enhanced_coupon>
+
+            <adminhtml>
+                <rewrite>
+                    <promo_quote_edit_tab_coupons_grid>Rendler_EnhancedCoupon_Block_Adminhtml_Promo_Quote_Edit_Tab_Coupons_Grid</promo_quote_edit_tab_coupons_grid>
+                </rewrite>
+            </adminhtml>
+        </blocks>
+
+        <helpers>
+            <enhanced_coupon>
+                <class>Rendler_EnhancedCoupon_Helper</class>
+            </enhanced_coupon>
+
+            <salesrule>
+                <rewrite>
+                    <coupon>Rendler_EnhancedCoupon_Helper_Coupon</coupon>
+                </rewrite>
+            </salesrule>
+        </helpers>
+
+        <models>
+            <enhanced_coupon>
+                <class>Rendler_EnhancedCoupon_Model</class>
+            </enhanced_coupon>
+
+            <salesrule>
+                <rewrite>
+                    <coupon_massgenerator>Rendler_EnhancedCoupon_Model_Coupon_Massgenerator</coupon_massgenerator>
+                    <coupon>Rendler_EnhancedCoupon_Model_Coupon</coupon>
+                </rewrite>
+            </salesrule>
+        </models>
+
+        <salesrule>
+            <coupon>
+                <charset>
+                    <pattern>abcdefghijklmnopqrstuvwxyz-ABCDEFGHIJKLMNOPQRSTUVWXYZ-0123456789</pattern>
+                </charset>
+            </coupon>
+        </salesrule>
+    </global>
+
+    <admin>
+        <routers>
+            <adminhtml>
+                <use>admin</use>
+                <args>
+                    <modules>
+                        <enhanced_coupon after="Mage_Adminhtml">Rendler_EnhancedCoupon_Adminhtml</enhanced_coupon>
+                    </modules>
+                    <frontName>admin</frontName>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+
+    <adminhtml>
+        <layout>
+            <updates>
+                <enhanced_coupon>
+                    <file>enhanced_coupon.xml</file>
+                </enhanced_coupon>
+            </updates>
+        </layout>
+
+        <events>
+            <adminhtml_promo_quote_edit_tab_coupons_form_prepare_form>
+                <observers>
+                    <enhanced_coupon>
+                        <class>enhanced_coupon/coupon_form_observer</class>
+                        <method>enhanceCouponGenerator</method>
+                    </enhanced_coupon>
+                </observers>
+            </adminhtml_promo_quote_edit_tab_coupons_form_prepare_form>
+        </events>
+    </adminhtml>
+
+    <default>
+        <turnkeye_adminform>
+            <general>
+                <default_sort_by><![CDATA[position]]></default_sort_by>
+            </general>
+        </turnkeye_adminform>
+    </default>
+
+    <phpunit>
+        <suite>
+            <modules>
+                <Rendler_EnhancedCoupon />
+            </modules>
+        </suite>
+    </phpunit>
+
+</config>

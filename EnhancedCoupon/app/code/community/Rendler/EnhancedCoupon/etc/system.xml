@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the GNU GENERAL PUBLIC LICENSE (GPL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://www.gnu.org/copyleft/gpl.html
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to magento@rendler.me so we can send you a copy immediately.
+ *
+ * @package     Rendler_EnhancedCoupon
+ * @copyright   Copyright (c) Denis-Florin Rendler <http://www.denis.rendler.me>
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU General Public License v.3
+ */
+-->
+<config>
+    <sections>
+        <promo translate="label" module="salesrule">
+            <groups>
+                <auto_generated_coupon_codes translate="label" module="salesrule">
+                    <fields>
+                        <pattern translate="label comment" module="salesrule">
+                            <label>Code Pattern</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>21</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment><![CDATA[Code pattern to use for coupon code generation.<br /> <b>$</b> - upper case letter, <b>#</b> - digit<br />E.g. PROMO-$$#$ will result in PROMO-AB1C]]></comment>
+                            <depends>
+                                <format>pattern</format>
+                            </depends>
+                        </pattern>
+                    </fields>
+                </auto_generated_coupon_codes>
+            </groups>
+        </promo>
+    </sections>
+</config>
