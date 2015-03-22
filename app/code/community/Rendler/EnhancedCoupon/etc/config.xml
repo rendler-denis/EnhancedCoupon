@@ -105,14 +105,6 @@
         </events>
     </adminhtml>
 
-    <default>
-        <turnkeye_adminform>
-            <general>
-                <default_sort_by><![CDATA[position]]></default_sort_by>
-            </general>
-        </turnkeye_adminform>
-    </default>
-
     <phpunit>
         <suite>
             <modules>
